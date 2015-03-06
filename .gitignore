@@ -37,3 +37,6 @@ nosetests.xml
 
 # Environment
 venv
+
+# Database
+app.db
