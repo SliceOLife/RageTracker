@@ -1,0 +1,13 @@
+{% extends "layout.html" %}
+{% block content %}
+  <div class="jumbo">
+    <h2>Profile | {{ session['nickname'] }}<h2>
+    {% if session['killCount'] != 25 %}
+    <h3>You're currently on boss: {{ session['currentEnemy'] }} <a href={{ url_for('defeated') }}>
+    <img class="bossCompleted" src={{ url_for('static', filename='img/kill.svg') }}/></a><h3>
+    {% else %}
+    <h3>Congratulations! You've defeated every boss!</h3>
+    <h4><a class="resetLink" href={{ url_for('reset') }}>Reset?</a></h4>
+    {% endif %}
+  </div>
+{% endblock %}
