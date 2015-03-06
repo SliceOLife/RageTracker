@@ -1,6 +1,7 @@
 # RageTracker
 
-RageTracker is a web app to allow people to track progress and plans to let them compete on completing the Dark Souls videogame.
+RageTracker is a web app to allow people to track progress
+on their journey to completing the Dark Souls videogame.
 
 Current planned features are:
 * User registration
