@@ -11,13 +11,11 @@ jQuery(document).ready(function() {
 });
 </script>
   <div class="jumbo">
-    <h2>Profile | {{ session['nickname'] }}<h2>
+    <h2>{{ session['nickname'] }}'s Profile<h2>
     {% if session['killCount'] != 25 %}
-    <h3>You're currently on boss: {{ session['currentEnemy'] }} <a href={{ url_for('defeated') }}>
-    <img class="bossCompleted" src={{ url_for('static', filename='img/kill.svg') }}/></a><h3>
+    <h3>This user is currently on boss: {{ session['currentEnemy'] }}!<h3>
     {% else %}
-    <h3>Congratulations! You've defeated every boss!</h3>
-    <h4><a class="resetLink" href={{ url_for('reset') }}>Reset?</a></h4>
+    <h3>This user has defeated every boss!</h3>
     {% endif %}
     <div class="layer">
       <p class="heading">Stats</p>

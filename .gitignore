@@ -39,4 +39,4 @@ nosetests.xml
 venv
 
 # Database
-*/*.db
+ragetracker/app.db
