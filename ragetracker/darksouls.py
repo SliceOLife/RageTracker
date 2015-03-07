@@ -1,3 +1,5 @@
+from models import db, BossKill
+from ragetracker import app
 class DarkSouls:
     enemies = [
     'Asylum Demon',
@@ -30,3 +32,9 @@ class DarkSouls:
 
     def getBoss(self, boss_id):
         return self.enemies[boss_id]
+
+# also include for jinja templates
+def getBoss(boss_id):
+    souls = DarkSouls()
+    return souls.enemies[boss_id]
+app.jinja_env.globals.update(get_boss=getBoss)
