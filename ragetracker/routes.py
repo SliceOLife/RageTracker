@@ -74,7 +74,27 @@ def profile():
   if user is None:
     return redirect(url_for('signin'))
   else:
-    return render_template('profile.html')
+    stats = BossKill.query.filter_by(user_id = user.uid).all()
+    return render_template('profile.html', stats=stats)
+
+@app.route('/profile/<int:id>')
+def userProfile(id):
+  user = User.query.filter_by(uid = id).first()
+
+  if user:
+    session['nickname'] = user.nickname
+    session['killCount'] = user.killCount
+
+    souls = DarkSouls()
+    session['currentEnemy'] = souls.getBoss(user.killCount)
+    stats = BossKill.query.filter_by(user_id = user.uid).all()
+    return render_template('user_profile.html', stats=stats)
+  else:
+    return render_template('error/user_profile.html')
+
+@app.route('/dashboard')
+def getDashboard():
+  return render_template('error/not_implemented.html')
 
 @app.route('/defeated')
 def defeated():
