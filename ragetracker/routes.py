@@ -69,7 +69,10 @@ def profile():
   session['killCount'] = user.killCount
 
   souls = DarkSouls()
-  session['currentEnemy'] = souls.getBoss(user.killCount)
+  if user.killCount < 25:
+    session['currentEnemy'] = souls.getBoss(user.killCount + 1)
+  else:
+    session['currentEnemy'] = souls.getBoss(user.killCount)
 
   if user is None:
     return redirect(url_for('signin'))
